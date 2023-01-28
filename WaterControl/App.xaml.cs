@@ -16,7 +16,7 @@ namespace WaterControl
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            Login login = new Login();
+            MainWindow login = new MainWindow();
             login.Show();
         }
     }

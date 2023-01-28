@@ -137,18 +137,12 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="27*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="9*"/>
+                                    <ColumnDefinition Width="3*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <materialDesign:PopupBox Grid.Column="3"
-                            DockPanel.Dock="Right"
-                            PlacementMode="BottomAndAlignRightEdges">
-                                    <ListBox>
-                                        <ListBoxItem>
-                                            <Button x:Name="btnExitAccount" Content="Чиқиш" Click="btnExitAccount_Click"/>
-                                        </ListBoxItem>
-                                    </ListBox>
-                                </materialDesign:PopupBox>
+                                
                                 <ToggleButton Grid.Column="0"
                                     x:Name="ToggleButton"
                                     Click="ToggleButton_Click"
@@ -159,8 +153,39 @@
                                      FontSize="20" HorizontalAlignment="Left">
                                     Menu
                                 </TextBlock>
-                                <TextBlock Grid.Column="2" x:Name="waterdDammName" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold"/>
-                                <TextBlock Grid.Column="2"  x:Name="userName" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="2" x:Name="waterdDammName" Text="Хўжаобод Гидроузели" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                                <Border Grid.Column="3" Margin="5" CornerRadius="5">
+                                    <Grid Margin="10 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Column="1" Name="region" FontSize="18"/>
+                                        <TextBlock Grid.Column="1" Grid.Row="1" Name="cloud" FontSize="18"/>
+                                        <TextBlock Grid.Column="3" Grid.Row="1" Name="temp" FontSize="18"/>
+                                        <TextBlock Grid.Column="3" Name="wind" FontSize="18"/>
+                                        <TextBlock FontSize="18" Text="Туман :"/>
+                                        <TextBlock Text="Шамол :" Grid.Column="2" FontSize="18"/>
+                                        <TextBlock Text="Булутлилик :" Grid.Row="1" FontSize="18"/>
+                                        <TextBlock Text="Ҳарорат :" Grid.Column="2" Grid.Row="1" FontSize="18"/>
+                                    </Grid>
+                                </Border>
+                                <TextBlock Grid.Column="4" x:Name="userName" Text="Бузруков Жавоҳир " FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                <materialDesign:PopupBox  Grid.Column="5"
+                                     DockPanel.Dock="Right"
+                                     PlacementMode="BottomAndAlignRightEdges">
+                                    <ListBox>
+                                        <ListBoxItem>
+                                            <Button x:Name="btnExitAccount" Content="Чиқиш" Click="btnExitAccount_Click"/>
+                                        </ListBoxItem>
+                                    </ListBox>
+                                </materialDesign:PopupBox>
                             </Grid>
                         </materialDesign:ColorZone>
                     </Border>
