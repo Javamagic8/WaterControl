@@ -23,5 +23,40 @@ namespace WaterControl.Windows
         {
             InitializeComponent();
         }
+
+        private void btnOpenInterfaceSettingsDialog_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnControlPanel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnViewsPanel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnMonitoringPanel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnInstructionPanel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnExitAccount_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

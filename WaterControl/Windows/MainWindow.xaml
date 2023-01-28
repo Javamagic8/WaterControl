@@ -39,7 +39,6 @@
     <!--Dialog Content end-->
     <!--Main content start-->
         <DockPanel>
-            
             <!--Footer start-->
             <Grid Height="70" Background="#F0F0F0" DockPanel.Dock="Bottom">
                 <Grid.Resources>
@@ -104,6 +103,173 @@
                 </Button>
             </Grid>
             <!--footer end-->
+            <!--Page Content start-->
+            <Border>
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0 0" EndPoint="0 1">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Offset="0.05" Color="#7FE5E5E5" />
+                            <GradientStop Offset="1" Color="#FFFFFF" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="9*"/>
+                    </Grid.RowDefinitions>
+                    <!--Navbar start-->
+                    <Border Grid.Row="0" VerticalAlignment="Top">
+                        <Border.Effect>
+                            <DropShadowEffect>
+                                <DropShadowEffect.Color>Gray</DropShadowEffect.Color>
+                                <DropShadowEffect.Opacity>0.1</DropShadowEffect.Opacity>
+                            </DropShadowEffect>
+                        </Border.Effect>
+                        <materialDesign:ColorZone
+                    Mode="Inverted" BorderThickness="0" BorderBrush="Gray"
+                    Background="#FFFFFF"
+                    Foreground="Black"
+                    CornerRadius="8"
+                    Height="70">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="27*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <materialDesign:PopupBox Grid.Column="3"
+                            DockPanel.Dock="Right"
+                            PlacementMode="BottomAndAlignRightEdges">
+                                    <ListBox>
+                                        <ListBoxItem>
+                                            <Button x:Name="btnExitAccount" Content="Чиқиш" Click="btnExitAccount_Click"/>
+                                        </ListBoxItem>
+                                    </ListBox>
+                                </materialDesign:PopupBox>
+                                <ToggleButton Grid.Column="0"
+                                    x:Name="ToggleButton"
+                                    Click="ToggleButton_Click"
+                                Foreground="#979797"
+                                Style="{DynamicResource MaterialDesignHamburgerToggleButton}" />
+                                <TextBlock Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                     FontSize="20" HorizontalAlignment="Left">
+                                    Menu
+                                </TextBlock>
+                                <TextBlock Grid.Column="2" x:Name="waterdDammName" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                                <TextBlock Grid.Column="2"  x:Name="userName" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            </Grid>
+                        </materialDesign:ColorZone>
+                    </Border>
+                    <!--Navbar end-->
+                    <Grid Grid.Row="1" Margin="0,15,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.Resources>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#2196F3"/>
+                                    <Setter Property="Padding" Value="10,10"/>
+                                    <Setter Property="Margin" Value="10"/>
+                                    <Setter Property="FontSize" Value="25"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="FontWeight" Value="SemiBold"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Style.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="10" />
+                                        </Style>
+                                    </Style.Resources>
+                                </Style>
+
+                            </Grid.Resources>
+                            <Border Background="#B3E5FC" 
+                                CornerRadius="0 20 20 0" x:Name="MenuPanel" Padding="15,30,15,30" Margin="3,0,5,0" >
+                                <StackPanel Orientation="Vertical" Name="dropdownInnerContent">
+                                    <Button HorizontalAlignment="Left" Width="315" Name="btnOpenInterfaceSettingsDialog" Click="btnOpenInterfaceSettingsDialog_Click">
+                                        <Button.Effect>
+                                            <DropShadowEffect>
+                                                <DropShadowEffect.BlurRadius>10</DropShadowEffect.BlurRadius>
+                                                <DropShadowEffect.Opacity>0.3</DropShadowEffect.Opacity>
+                                                <DropShadowEffect.Color>#2196F3</DropShadowEffect.Color>
+                                            </DropShadowEffect>
+                                        </Button.Effect>
+                                        Интерфейс созламалари
+                                    </Button>
+                                    <!--<Button HorizontalAlignment="Left" Width="315" Name="btnOpenAddGateDialog" Click="btnOpenAddGateDialog_Click">
+                                        <Button.Effect>
+                                            <DropShadowEffect>
+                                                <DropShadowEffect.BlurRadius>10</DropShadowEffect.BlurRadius>
+                                                <DropShadowEffect.Opacity>0.3</DropShadowEffect.Opacity>
+                                                <DropShadowEffect.Color>#2196F3</DropShadowEffect.Color>
+                                            </DropShadowEffect>
+                                        </Button.Effect>
+                                        Янги дарвоза яратиш
+                                    </Button>
+                                    <Button HorizontalAlignment="Left" Width="315" Name="btnOpenGateSettingsDialog" Click="btnOpenGateSettingsDialog_Click">
+                                        <Button.Effect>
+                                            <DropShadowEffect>
+                                                <DropShadowEffect.BlurRadius>10</DropShadowEffect.BlurRadius>
+                                                <DropShadowEffect.Opacity>0.3</DropShadowEffect.Opacity>
+                                                <DropShadowEffect.Color>#2196F3</DropShadowEffect.Color>
+                                            </DropShadowEffect>
+                                        </Button.Effect>
+                                        Дарвозани созлаш
+                                    </Button>
+                                    <Button VerticalAlignment="Center" HorizontalAlignment="Left" Width="315" Name="btnOpenLicenseDialog" Click="btnOpenLicenseDialog_Click">
+                                        <Button.Effect>
+                                            <DropShadowEffect>
+                                                <DropShadowEffect.BlurRadius>10</DropShadowEffect.BlurRadius>
+                                                <DropShadowEffect.Opacity>0.3</DropShadowEffect.Opacity>
+                                                <DropShadowEffect.Color>#2196F3</DropShadowEffect.Color>
+                                            </DropShadowEffect>
+                                        </Button.Effect>
+                                        Лицензия
+                                    </Button>
+                                    <Button x:Name="btnAddUser" Click="btnAddUser_Click" HorizontalAlignment="Left" Width="315">
+                                        <Button.Effect>
+                                            <DropShadowEffect>
+                                                <DropShadowEffect.BlurRadius>10</DropShadowEffect.BlurRadius>
+                                                <DropShadowEffect.Opacity>0.3</DropShadowEffect.Opacity>
+                                                <DropShadowEffect.Color>#2196F3</DropShadowEffect.Color>
+                                            </DropShadowEffect>
+                                        </Button.Effect>
+                                        Фойдаланувчи қўшиш
+                                    </Button>
+                                    <Button x:Name="btnOpenLoginSmartWaterDialog" Click="btnOpenLoginSmartWaterDialog_Click" HorizontalAlignment="Left" Width="315">
+                                        <Button.Effect>
+                                            <DropShadowEffect>
+                                                <DropShadowEffect.BlurRadius>10</DropShadowEffect.BlurRadius>
+                                                <DropShadowEffect.Opacity>0.3</DropShadowEffect.Opacity>
+                                                <DropShadowEffect.Color>#2196F3</DropShadowEffect.Color>
+                                            </DropShadowEffect>
+                                        </Button.Effect>
+                                        Connect SmartWater
+                                    </Button>
+                                    <Button x:Name="btnSaveDatabase" Click="btnSaveDatabase_Click" HorizontalAlignment="Left" Width="315">
+                                        <Button.Effect>
+                                            <DropShadowEffect>
+                                                <DropShadowEffect.BlurRadius>10</DropShadowEffect.BlurRadius>
+                                                <DropShadowEffect.Opacity>0.3</DropShadowEffect.Opacity>
+                                                <DropShadowEffect.Color>#2196F3</DropShadowEffect.Color>
+                                            </DropShadowEffect>
+                                        </Button.Effect>
+                                        Базани сақлаш
+                                    </Button>-->
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                        <Frame Width="1880" Margin="20, 0" Grid.Column="1" NavigationUIVisibility="Hidden" Name="mainWindowMiddleContent"  />
+                        <Frame Width="1880" Margin="20, 0" Grid.Column="1" NavigationUIVisibility="Hidden" Name="ipCamContent" Visibility="Hidden"  />
+                    </Grid>
+                </Grid>
+            </Border>
+            <!--Page content end-->
         </DockPanel>
     <!--Main content end-->
         
