@@ -24,19 +24,89 @@
         </Style>
     </Window.Resources>
     
-    <!--Dialog Content start-->
+    
     <materialDesign:DialogHost CloseOnClickAway="True" x:Name="mainWindowDialogHost"
                                OverlayBackground="#A3000000"
                                Identifier="mainWindowDialogHost"
                                DialogBackground="Transparent">
+    <!--Dialog Content start-->
         <materialDesign:DialogHost.DialogContent>
             <Frame Name="dialogHostFrame"
                    Source="#"
                    Background="Transparent"
                    NavigationUIVisibility="Hidden" />
         </materialDesign:DialogHost.DialogContent>
-    </materialDesign:DialogHost>
     <!--Dialog Content end-->
-    
+    <!--Main content start-->
+        <DockPanel>
+            
+            <!--Footer start-->
+            <Grid Height="70" Background="#F0F0F0" DockPanel.Dock="Bottom">
+                <Grid.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Width" Value="150"/>
+                        <Setter Property="Height" Value="65"/>
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button  x:Name="btnControlPanel" HorizontalAlignment="Center" Click="btnControlPanel_Click" VerticalAlignment="Bottom" Background="{x:Null}" BorderThickness="0">
+                    <Button.Content>
+                        <StackPanel>
+                            <Canvas  Height="31.5" Width="31.3">
+                                <Canvas >
+                                    <Path x:Name="controlbtncolor" Fill="#0E4DA4" Data="M6.59,0H1.65C.74,0,0,1,0,2.25v27c0,1.24.74,2.25,1.65,2.25H6.59c.91,0,1.65-1,1.65-2.25v-27C8.24,1,7.5,0,6.59,0ZM29.66,0H24.71c-.9,0-1.64,1-1.64,2.25v27c0,1.24.74,2.25,1.64,2.25h4.95c.9,0,1.64-1,1.64-2.25v-27C31.3,1,30.56,0,29.66,0ZM18.12,0H13.18c-.91,0-1.65,1-1.65,2.25v27c0,1.24.74,2.25,1.65,2.25h4.94c.91,0,1.65-1,1.65-2.25v-27C19.77,1,19,0,18.12,0Z" />
+                                </Canvas>
+                            </Canvas>
+                            <TextBlock Name="textControlBtn" Text="Бошқарув" Margin="0,0,0,5" FontSize="18" FontWeight="DemiBold" Foreground="#0E4DA4"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button x:Name="btnViewsPanel" Grid.Column="1" Click="btnViewsPanel_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="{x:Null}" BorderThickness="0">
+                    <Button.Content>
+                        <StackPanel>
+                            <Canvas Height="28.5" Width="48">
+                                <Canvas>
+                                    <Path x:Name="viewbtncolor" Fill="#82898C" Data="M37.33,10.69V2.37A2.54,2.54,0,0,0,34.67,0h-32A2.54,2.54,0,0,0,0,2.37V26.13A2.54,2.54,0,0,0,2.67,28.5h32a2.54,2.54,0,0,0,2.66-2.37V17.81L48,27.31V1.19Z" />
+                                </Canvas>
+                            </Canvas>
+                            <TextBlock Name="textViewBtn" Text="Кузатув" Margin="0,0,0,5" FontSize="18" FontWeight="DemiBold" Foreground="#82898C"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button x:Name="btnMonitoringPanel" Grid.Column="2" Click="btnMonitoringPanel_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="{x:Null}" BorderThickness="0">
+                    <Button.Content>
+                        <StackPanel>
+                            <Canvas Height="31.5" Width="31.5">
+                                <Canvas>
+                                    <Path x:Name="monitorbtncolor" Fill="#82898C" Data="M28,0H3.5A3.5,3.5,0,0,0,0,3.5V28a3.5,3.5,0,0,0,3.5,3.5H28A3.5,3.5,0,0,0,31.5,28V3.5A3.5,3.5,0,0,0,28,0ZM10.5,24.5H7V12.25h3.5Zm7,0H14V7h3.5Zm7,0H21v-7h3.5Z" />
+                                </Canvas>
+                            </Canvas>
+                            <TextBlock Name="textMonitoringBtn" Text="Мониторинг" Margin="0,0,0,5" FontSize="18" FontWeight="DemiBold" Foreground="#82898C"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button x:Name="btnInstructionPanel" Grid.Column="3" Click="btnInstructionPanel_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="{x:Null}" BorderThickness="0">
+                    <Button.Content>
+                        <StackPanel>
+                            <Canvas Height="25.5" Width="33">
+                                <Canvas>
+                                    <Path x:Name="commandbtncolor" Fill="#82898C" Data="M30,.75A17.87,17.87,0,0,0,24.75,0c-2.92,0-6.08.6-8.25,2.25C14.33.6,11.17,0,8.25,0S2.18.6,0,2.25v22A.81.81,0,0,0,.75,25c.15,0,.22-.07.37-.07a18.28,18.28,0,0,1,7.13-1.65c2.92,0,6.08.6,8.25,2.25a18,18,0,0,1,8.25-2.25,15.36,15.36,0,0,1,7.13,1.57.62.62,0,0,0,.37.08.81.81,0,0,0,.75-.75V2.25A10.05,10.05,0,0,0,30,.75ZM30,21a17.27,17.27,0,0,0-5.25-.75A18,18,0,0,0,16.5,22.5V5.25A18.15,18.15,0,0,1,24.75,3,17.59,17.59,0,0,1,30,3.75Z" />
+                                </Canvas>
+                            </Canvas>
+                            <TextBlock Name="textCommandBtn" Text="Кўрсатма" Margin="0,0,0,5" FontSize="18" FontWeight="DemiBold" Foreground="#82898C"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <!--footer end-->
+        </DockPanel>
+    <!--Main content end-->
+        
+    </materialDesign:DialogHost>
 </Window>
 
