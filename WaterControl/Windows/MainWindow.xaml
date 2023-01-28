@@ -4,9 +4,39 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WaterControl.Windows"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    Title="SmartGate" Height="1080" Width="1920" WindowStartupLocation="CenterScreen" WindowState="Maximized" >
+    <Window.Resources>
+        <Style TargetType="TreeViewItem" x:Key="SmallTreeViewItem">
+            <Setter Property="Margin" Value="10 20 0 10" />
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontFamily" Value="SEGOE UI" />
+        </Style>
+
+        <Style TargetType="TreeViewItem" x:Key="BigTreeViewItem">
+            <Setter Property="FontSize" Value="21"/>
+            <Setter Property="Foreground" Value="#E5E5E5" />
+            <Setter Property="Margin" Value="10 20 0 0" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+    </Window.Resources>
+    
+    <!--Dialog Content start-->
+    <materialDesign:DialogHost CloseOnClickAway="True" x:Name="mainWindowDialogHost"
+                               OverlayBackground="#A3000000"
+                               Identifier="mainWindowDialogHost"
+                               DialogBackground="Transparent">
+        <materialDesign:DialogHost.DialogContent>
+            <Frame Name="dialogHostFrame"
+                   Source="#"
+                   Background="Transparent"
+                   NavigationUIVisibility="Hidden" />
+        </materialDesign:DialogHost.DialogContent>
+    </materialDesign:DialogHost>
+    <!--Dialog Content end-->
+    
 </Window>
+
