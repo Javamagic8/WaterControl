@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -19,9 +20,13 @@ namespace WaterControl.Windows
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool menuOpen = false; private Duration _openCloseDuration = new Duration(TimeSpan.FromSeconds(0.3));
+
+
         public MainWindow()
         {
             InitializeComponent();
+            MenuPanel.Width = 0;
         }
 
         private void btnOpenInterfaceSettingsDialog_Click(object sender, RoutedEventArgs e)
@@ -56,7 +61,19 @@ namespace WaterControl.Windows
 
         private void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!menuOpen)
+            {
+                dropdownInnerContent.Measure(new Size(MenuPanel.MaxWidth, MenuPanel.MaxHeight));
+                DoubleAnimation widthhAnimation = new DoubleAnimation(0, 382, _openCloseDuration);
+                MenuPanel.BeginAnimation(WidthProperty, widthhAnimation);
+                menuOpen = true;
+            }
+            else
+            {
+                DoubleAnimation widthhAnimation = new DoubleAnimation(0, _openCloseDuration);
+                MenuPanel.BeginAnimation(WidthProperty, widthhAnimation);
+                menuOpen = false;
+            }
         }
     }
 }
