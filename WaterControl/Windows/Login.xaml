@@ -132,7 +132,7 @@
                     Foreground="{Binding ElementName=NameTextBox, Path=BorderBrush}" VerticalAlignment="Center" Margin="10,15,10,0" Width="25" Height="25"
                     />
                         <TextBox 
-                    x:Name="NameTextBox"
+                    x:Name="UserName"
                     materialDesign:HintAssist.Hint="Логин"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                     Width="140" Margin="0,2,0,0" FontSize="18"
@@ -154,7 +154,7 @@
                              materialDesign:HintAssist.Foreground="Green"
                              materialDesign:TextFieldAssist.UnderlineBrush="Green"
                              Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
-                             x:Name="passwordBox"
+                             x:Name="UserPassword"
                              Width="140" Margin="0,2,0,0" FontSize="18"
                              ></PasswordBox>
                     </StackPanel>
