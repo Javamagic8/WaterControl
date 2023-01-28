@@ -3,10 +3,182 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WaterControl.Windows"
+        xmlns:local="clr-namespace:WaterControl"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="WaterControl" Height="550" Width="800" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <materialDesign:DialogHost DialogOpened="openCB" DialogClosing="closeCB">
+        <materialDesign:DialogHost.DialogContent>
+            <Grid Margin="50">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Kirish amalga oshirilmoqda..." HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0"></TextBlock>
+                <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" IsIndeterminate="True" Grid.Row="1" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"></ProgressBar>
+                <Button Style="{StaticResource MaterialDesignRaisedButton}" 
+                        Grid.Row="2" Content="Чиқиш" 
+                        Margin="0,10,0,0" BorderThickness="0"
+                         Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                        HorizontalAlignment="Center" VerticalAlignment="Stretch"></Button>
+            </Grid>
+        </materialDesign:DialogHost.DialogContent>
+        <Grid>
+            <Grid.Resources>
+                <Style x:Key="setVisibilityBasedLogin" TargetType="StackPanel">
+                    <Setter Property="Visibility" Value="Visible"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=IsLoggedIn, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}
+                                    , UpdateSourceTrigger=PropertyChanged}" Value="true">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <materialDesign:TransitioningContent Grid.Column="1" 
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Stretch"
+                             >
+                <materialDesign:TransitioningContent.OpeningEffects>
+                    <materialDesign:TransitionEffect Kind="FadeIn" Duration="0:0:1"/>
+                    <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:0.5"/>
+                </materialDesign:TransitioningContent.OpeningEffects>
+                <materialDesign:Card>
+                    <Image Source="/Resources/login.jpg" x:Name="IMAGEPAGE" Stretch="UniformToFill"/>
+                </materialDesign:Card>
+            </materialDesign:TransitioningContent>
+            <Grid Grid.Column="0" VerticalAlignment="Center" Margin="0,-3,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <materialDesign:TransitioningContent HorizontalAlignment="Center"  Margin="0,0,0,0" VerticalAlignment="Stretch">
+                    <materialDesign:TransitioningContent.OpeningEffects>
+                        <materialDesign:TransitionEffect Kind="ExpandIn" Duration="0:0:1"/>
+                    </materialDesign:TransitioningContent.OpeningEffects>
+
+                    <TextBlock
+                        FontSize="36"
+                       Style="{StaticResource MaterialDesignHeadline1TextBlock }"         
+                       >
+                Кириш
+                    </TextBlock>
+                </materialDesign:TransitioningContent>
+                <TextBlock x:Name="loginStatus" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Center" 
+                           Grid.Row="0" 
+                           Margin="0,53,0,0"
+                           >
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Text" Value="Login Status"></Setter>
+                            <Setter Property="Foreground" Value="Black"></Setter>
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=IsJustStarted, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}
+                                    , UpdateSourceTrigger=PropertyChanged}" Value="false"/>
+                                        <Condition Binding="{Binding Path=IsLoggedIn, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}
+                                    , UpdateSourceTrigger=PropertyChanged}" Value="True"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Text" Value="Уруниш мувоффақятли !"/>
+                                    <Setter Property="Foreground" Value="Green"/>
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                    <Setter Property="FontSize" Value="20"/>
+                                </MultiDataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=IsJustStarted, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}
+                                    , UpdateSourceTrigger=PropertyChanged}" Value="false"/>
+                                        <Condition Binding="{Binding Path=IsLoggedIn, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}
+                                    , UpdateSourceTrigger=PropertyChanged}" Value="false"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Text" Value="Логин ёки пароль хато"/>
+                                    <Setter Property="Foreground" Value="Red"/>
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                    <Setter Property="FontSize" Value="20"/>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <materialDesign:TransitioningContent Grid.Row="1" Margin="70,20,0,0" HorizontalAlignment="Left">
+                    <materialDesign:TransitioningContent.OpeningEffects>
+                        <materialDesign:TransitionEffect Kind="SlideInFromLeft" Duration="0:0:1"/>
+                    </materialDesign:TransitioningContent.OpeningEffects>
+                    <StackPanel 
+                    Style="{StaticResource setVisibilityBasedLogin}"
+                    Orientation="Horizontal" >
+
+                        <materialDesign:PackIcon  
+                    Kind="Account"
+                    Foreground="{Binding ElementName=NameTextBox, Path=BorderBrush}" VerticalAlignment="Center" Margin="10,15,10,0" Width="25" Height="25"
+                    />
+                        <TextBox 
+                    x:Name="NameTextBox"
+                    materialDesign:HintAssist.Hint="Логин"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    Width="140" Margin="0,2,0,0" FontSize="18"
+                    />
+                    </StackPanel>
+                </materialDesign:TransitioningContent>
+                <materialDesign:TransitioningContent Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="70,0,0,0">
+                    <materialDesign:TransitioningContent.OpeningEffects>
+                        <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:1"/>
+                    </materialDesign:TransitioningContent.OpeningEffects>
+                    <StackPanel 
+                Style="{StaticResource setVisibilityBasedLogin}"
+                Orientation="Horizontal" >
+                        <materialDesign:PackIcon 
+                    Kind="Key"
+                    Margin="10,15,10,0"
+                    Foreground="{Binding ElementName=passwordBox, Path=BorderBrush}" VerticalAlignment="Center" Width="25" Height="25"/>
+                        <PasswordBox materialDesign:HintAssist.Hint="Пароль"
+                             materialDesign:HintAssist.Foreground="Green"
+                             materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                             Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                             x:Name="passwordBox"
+                             Width="140" Margin="0,2,0,0" FontSize="18"
+                             ></PasswordBox>
+                    </StackPanel>
+                </materialDesign:TransitioningContent>
+                <materialDesign:TransitioningContent Grid.Row="3"  HorizontalAlignment="Left" Margin="70,-7,0,0">
+                    <materialDesign:TransitioningContent.OpeningEffects>
+                        <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:1"/>
+                    </materialDesign:TransitioningContent.OpeningEffects>
+                    <StackPanel 
+                    Orientation="Horizontal" Margin="30 0 0 0"
+                Style="{StaticResource setVisibilityBasedLogin}"
+                >
+                        <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                        Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                        materialDesign:ButtonAssist.CornerRadius="20"
+                        Height="40" IsDefault="True" Background="#2196F3"
+                        Width="90" BorderThickness="0"
+                        Margin="40"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                    >Кириш
+                        </Button>
+                    </StackPanel>
+                </materialDesign:TransitioningContent>
+            </Grid>
+        </Grid>
+    </materialDesign:DialogHost>
 </Window>
