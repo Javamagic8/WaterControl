@@ -46,35 +46,15 @@ namespace WaterControl.Windows
                 var response = await client.GetAsync(url);
                 string responseString = await response.Content.ReadAsStringAsync();
                 WeatherInfo? waterCondition = JsonSerializer.Deserialize<WeatherInfo>(responseString);
-                temp.Text = waterCondition.current.temp_c.ToString();
-                wind.Text = waterCondition.current.wind_kph.ToString();
+                temp.Text = waterCondition.current.temp_c.ToString() + " C°";
+                wind.Text = waterCondition.current.wind_kph.ToString() + " m/s";
                 region.Text = waterCondition.location.region;
-                cloud.Text = waterCondition.current.cloud.ToString();
+                cloud.Text = waterCondition.current.cloud.ToString() + "%";
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void btnControlPanel_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnViewsPanel_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnMonitoringPanel_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnInstructionPanel_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void btnExitAccount_Click(object sender, RoutedEventArgs e)
@@ -133,6 +113,90 @@ namespace WaterControl.Windows
             backtocard.Visibility = Visibility.Hidden;
             waterdDammName.Text = "Андижон Вилояти";
 
+            controlbtncolor.Fill = new SolidColorBrush(Color.FromRgb(14, 77, 164));
+            viewbtncolor.Fill = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            monitorbtncolor.Fill = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            commandbtncolor.Fill = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+
+            textControlBtn.Foreground = new SolidColorBrush(Color.FromRgb(14, 77, 164));
+            textViewBtn.Foreground = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            textMonitoringBtn.Foreground = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            textCommandBtn.Foreground = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            ipCamContent.Visibility = Visibility.Hidden;
+            mainWindowMiddleContent.Visibility = Visibility.Visible;
+            RegionCard.Visibility = Visibility.Visible;
+
+            mainWindowMiddleContent.Visibility = Visibility.Hidden;
+
+        }
+
+        private void btnControlPanel_Click(object sender, RoutedEventArgs e)
+        {
+            controlbtncolor.Fill = new SolidColorBrush(Color.FromRgb(14, 77, 164));
+            viewbtncolor.Fill = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            monitorbtncolor.Fill = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            commandbtncolor.Fill = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+
+            textControlBtn.Foreground = new SolidColorBrush(Color.FromRgb(14, 77, 164));
+            textViewBtn.Foreground = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            textMonitoringBtn.Foreground = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            textCommandBtn.Foreground = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            ipCamContent.Visibility = Visibility.Hidden;
+            mainWindowMiddleContent.Visibility = Visibility.Hidden;
+            RegionCard.Visibility = Visibility.Visible;
+
+            mainWindowMiddleContent.Visibility = Visibility.Hidden;
+        }
+
+        private void btnViewsPanel_Click(object sender, RoutedEventArgs e)
+        {
+            controlbtncolor.Fill = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            viewbtncolor.Fill = new SolidColorBrush(Color.FromRgb(14, 77, 164));
+            monitorbtncolor.Fill = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            commandbtncolor.Fill = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+
+            textControlBtn.Foreground = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            textViewBtn.Foreground = new SolidColorBrush(Color.FromRgb(14, 77, 164));
+            textMonitoringBtn.Foreground = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            textCommandBtn.Foreground = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            RegionCard.Visibility = Visibility.Hidden;
+            mainWindowMiddleContent.Navigate( new ViewPage());
+
+        }
+
+        private void btnMonitoringPanel_Click(object sender, RoutedEventArgs e)
+        {
+            controlbtncolor.Fill = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            viewbtncolor.Fill = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            monitorbtncolor.Fill = new SolidColorBrush(Color.FromRgb(14, 77, 164));
+            commandbtncolor.Fill = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+
+            textControlBtn.Foreground = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            textViewBtn.Foreground = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            textMonitoringBtn.Foreground = new SolidColorBrush(Color.FromRgb(14, 77, 164));
+            textCommandBtn.Foreground = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            ipCamContent.Visibility = Visibility.Hidden;
+            mainWindowMiddleContent.Visibility = Visibility.Visible;
+            RegionCard.Visibility = Visibility.Hidden;
+
+            // mainWindowMiddleContent.Navigate(new MonitoringPage());
+        }
+
+        private void btnInstruction_Click(object sender, RoutedEventArgs e)
+        {
+            controlbtncolor.Fill = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            viewbtncolor.Fill = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            monitorbtncolor.Fill = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            commandbtncolor.Fill = new SolidColorBrush(Color.FromRgb(14, 77, 164));
+
+            textControlBtn.Foreground = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            textViewBtn.Foreground = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            textMonitoringBtn.Foreground = new SolidColorBrush(Color.FromRgb(130, 137, 140));
+            textCommandBtn.Foreground = new SolidColorBrush(Color.FromRgb(14, 77, 164));
+            ipCamContent.Visibility = Visibility.Hidden;
+            mainWindowMiddleContent.Visibility = Visibility.Visible;
+            mainWindowMiddleContent.Navigate(new InstructionPage());
+            RegionCard.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -24,7 +24,6 @@
         </Style>
     </Window.Resources>
 
-
     <materialDesign:DialogHost CloseOnClickAway="True" x:Name="mainWindowDialogHost"
                                OverlayBackground="#A3000000"
                                Identifier="mainWindowDialogHost"
@@ -89,7 +88,7 @@
                         </StackPanel>
                     </Button.Content>
                 </Button>
-                <Button x:Name="btnInstructionPanel" Grid.Column="3" Click="btnInstructionPanel_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="{x:Null}" BorderThickness="0">
+                <Button x:Name="btnInstruction" Click="btnInstruction_Click" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="{x:Null}" BorderThickness="0">
                     <Button.Content>
                         <StackPanel>
                             <Canvas Height="25.5" Width="33">
