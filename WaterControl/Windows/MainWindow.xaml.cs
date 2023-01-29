@@ -15,6 +15,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WaterControl.Data;
+using WaterControl.Pages;
 
 namespace WaterControl.Windows
 {
@@ -32,6 +33,7 @@ namespace WaterControl.Windows
             InitializeComponent();
             MenuPanel.Width = 0;
             waterdDammName.Text = "Хўжаобод Гидроузели";
+            mainWindowMiddleContent.Navigate(new RegionCardPage());
             LoadDataFromSmartWater();
 
         }
@@ -103,6 +105,16 @@ namespace WaterControl.Windows
         private void btnOpenInterfaceSettingsDialog_Click(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void polmonWaterDamm_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void kampirqalaWaterDamm_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
