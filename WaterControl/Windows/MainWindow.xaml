@@ -288,7 +288,7 @@
                                 </StackPanel>
                             </Border>
                         </Grid>
-                        <Canvas Grid.Column="1" Name="Layer_1" Canvas.Left="0" Canvas.Top="0" Width="919" Height="659">
+                        <Canvas Grid.Column="1" Name="RegionCard" Canvas.Left="0" Canvas.Top="0" Width="919" Height="659">
                             <Canvas.Resources/>
                             <Canvas Name="Слой_3">
                                 <Canvas Name="Андижанская_область">
@@ -332,20 +332,16 @@
                             </Canvas>
                             <Canvas>
                                 <Button Style="{StaticResource MaterialDesignRaisedButton}"
-                        Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                         materialDesign:ButtonAssist.CornerRadius="20"
                         Height="25" IsDefault="True" Background="White"
                         Width="25" BorderThickness="0" Name="polmonWaterDamm" Click="polmonWaterDamm_Click"
-                        materialDesign:ShadowAssist.ShadowDepth="Depth0" RenderTransformOrigin="6.58,4.341" Canvas.Left="450" Canvas.Top="610"
-                    >
+                        materialDesign:ShadowAssist.ShadowDepth="Depth0" RenderTransformOrigin="6.58,4.341" Canvas.Left="450" Canvas.Top="610">
                                 </Button>
-                                <Button Canvas.Bottom="30" Canvas.Left="510" Style="{StaticResource MaterialDesignRaisedButton}"
-                        Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                                <Button Canvas.Bottom="30" Canvas.Left="528" Style="{StaticResource MaterialDesignRaisedButton}"
                         materialDesign:ButtonAssist.CornerRadius="20"
                         Height="26" IsDefault="True" Background="White"
                         Width="24" BorderThickness="0" Name="kampirqalaWaterDamm" Click="kampirqalaWaterDamm_Click" 
-                        materialDesign:ShadowAssist.ShadowDepth="Depth0" RenderTransformOrigin="23.34,24.021" HorizontalAlignment="Left" Canvas.Top="636" VerticalAlignment="Top"
-                    >
+                        materialDesign:ShadowAssist.ShadowDepth="Depth0" RenderTransformOrigin="23.34,24.021" HorizontalAlignment="Left" Canvas.Top="582" VerticalAlignment="Top">
                                 </Button>
                             </Canvas>
                         </Canvas>

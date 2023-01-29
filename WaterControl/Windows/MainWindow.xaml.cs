@@ -109,12 +109,16 @@ namespace WaterControl.Windows
 
         private void polmonWaterDamm_Click(object sender, RoutedEventArgs e)
         {
-
+            RegionCard.Visibility = Visibility.Collapsed;
+            mainWindowMiddleContent.Visibility = Visibility.Visible;
+            mainWindowMiddleContent.Navigate(new SecondWaterDam());
         }
 
         private void kampirqalaWaterDamm_Click(object sender, RoutedEventArgs e)
         {
-
+            RegionCard.Visibility = Visibility.Collapsed;
+            mainWindowMiddleContent.Visibility = Visibility.Visible;
+            mainWindowMiddleContent.Navigate(new FirsWaterDam());
         }
     }
 }

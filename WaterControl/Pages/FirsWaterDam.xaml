@@ -1,0 +1,420 @@
+﻿<Page x:Class="WaterControl.Pages.FirsWaterDam"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WaterControl.Pages"
+      mc:Ignorable="d" 
+      Title="FirstDam"
+      d:DesignHeight="894" d:DesignWidth="1880">
+    <DockPanel>
+        <Border
+            Padding="10,0" CornerRadius="6" Height="60" Background="#FFE3F2FD"  DockPanel.Dock="Bottom" Margin="5,0,5,0">
+            <ListBox x:Name="chunkList" Grid.Row="1" AlternationCount="12">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBoxItem>
+                    <Border Width="90" Height="45" BorderThickness="1" Background="#90CAF9" BorderBrush="#0D47A1" CornerRadius="4">
+                        <TextBlock FontSize="21" Text="F1" FontFamily="Lato" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                </ListBoxItem>
+            </ListBox>
+        </Border>
+        <ListBox DockPanel.Dock="Top" Name="lbControlGates" Background="{x:Null}" ItemsSource="{Binding ElementName=chunkList,Path=SelectedItem}" BorderThickness="0" 
+                       ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top" >
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" Height="780" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBoxItem>
+                <Border Width="360" Height="760" CornerRadius="10" Background="#FFB3E5FC" VerticalAlignment="Top">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="16*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="5*"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0"
+                        Margin="10,10,10,10"
+                        Background="#3F51B5"
+                        CornerRadius="10" Grid.ColumnSpan="2">
+                            <TextBlock 
+                            FontSize="30"
+                            FontWeight="DemiBold"
+                            Foreground="White"
+                            Text="1- Darvoza" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <Border Grid.Row="1" 
+                        CornerRadius="8"
+                        Margin="15,10,15,15" Background="#4FC3F7" Grid.ColumnSpan="2">
+                            <Canvas>
+                                <Border x:Name="minBottomColor1" Background="{Binding MinBottomColor}" Canvas.Bottom="0" Width="330"  Height="23"  CornerRadius="0,0,4,4"  HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                <Border x:Name="maxTopColor1" Background="{Binding MaxTopColor}" Width="330"  Height="23"  CornerRadius="4,4,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                <Border
+                            Width="25" Height="395" 
+                            Background="#81D4FA"
+                            CornerRadius="6" HorizontalAlignment="Center" Canvas.Top="23" VerticalAlignment="Top"
+                            />
+                                <Border
+                            Width="25" Height="396"
+                            Background="#81D4FA"
+                            CornerRadius="6" HorizontalAlignment="Left" Canvas.Left="305" Canvas.Top="23" VerticalAlignment="Center"
+                            />
+                                <Border
+                            Width="16" Name="damheight1" Height="{Binding HeightGate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            Background="#81D4FA"
+                            CornerRadius="6" Canvas.Left="156" Canvas.Top="23"
+                            />
+                                <Border Canvas.Left="25" Canvas.Top="{Binding HeightGate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="#FFB3E5FC" Width="280" Height="125" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,23,0,0">
+                                    <Border 
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Width="150"
+                                CornerRadius="8"
+                                    Background="#E1F5FE"
+                                    Height="60">
+                                        <TextBlock        
+                                    FontSize="40" Name="damlevel1"
+                                    LineHeight="40" TextAlignment="Center"
+                                    Text=""
+                                    />
+                                    </Border>
+                                </Border>
+                            </Canvas>
+                        </Border>
+                        <WrapPanel Grid.Row="2" Visibility="{Binding IsGlobal}" Grid.ColumnSpan="2" Margin="0,0,0,148" Grid.RowSpan="2">
+                            <TextBox PreviewTextInput="NumberValidationTextBox" x:Name="inputText1">
+                                <TextBox.Resources>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                        <Setter Property="FontSize" Value="25"/>
+                                        <Setter Property="Width" Value="200"/>
+                                        <Setter Property="Margin" Value="10,0,5,0"/>
+                                        <Setter Property="Height" Value="50"/>
+                                        <Setter Property="TextAlignment" Value="Center"/>
+                                        <Setter Property="Padding" Value="5"/>
+                                    </Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="BorderThickness" Value="3"/>
+                                        <Setter Property="BorderBrush" Value="#E1F5FE"/>
+                                        <Setter Property="CornerRadius" Value="10"/>
+
+                                    </Style>
+                                </TextBox.Resources>
+                            </TextBox>
+                            <Button Background="#2196F3" Name="btnInsert1"
+                                Foreground="White" BorderThickness="0"
+                                FontWeight="DemiBold" FontSize="20" Width="125" Height="50" Margin="5,0,10,0" IsEnabled="{Binding AcceptButton}"
+                            >
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                                Киритиш
+                            </Button>
+                        </WrapPanel>
+                        <Grid Grid.Row="3" Margin="10,0,10,0" Visibility="{Binding IsGlobal}" Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Margin="5,0" Grid.Column="0">
+                                <Button Width="100" Background="#2196F3" BorderThickness="0" Height="100" Name="btnUp1" IsEnabled="{Binding UpButton}">
+                                    <Button.Content>
+                                        <Path Width="65" Height="65" Stretch="Fill" Fill="White" Data="M10 18L-7.86805e-07 18L20 -8.74228e-07L40 18L30 18L30 36L10 36L10 18Z"/>
+                                    </Button.Content>
+                                </Button>
+                                <TextBlock FontSize="25" Margin="0,-3,0,0" Text="Тепага" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="5,0" Grid.Column="1">
+                                <Button Width="100" BorderThickness="0" Background="#EF5350" Height="100" Name="btnStop1" IsEnabled="{Binding StopButton}">
+                                    <Button.Content>
+                                        <Path  Width="65" Height="65" Stretch="Fill" Fill="White" Data="M9 16.2V19.8H27V16.2H9ZM18 0C8.064 0 0 8.064 0 18C0 27.936 8.064 36 18 36C27.936 36 36 27.936 36 18C36 8.064 27.936 0 18 0ZM18 32.4C10.062 32.4 3.6 25.938 3.6 18C3.6 10.062 10.062 3.6 18 3.6C25.938 3.6 32.4 10.062 32.4 18C32.4 25.938 25.938 32.4 18 32.4Z"/>
+                                    </Button.Content>
+                                </Button>
+                                <TextBlock FontSize="25" Margin="0,-3,0,0" Text="Стоп" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="5,0" Grid.Column="2">
+                                <Button Width="100" BorderThickness="0" Background="#2196F3" Height="100" Name="btnDown1" IsEnabled="{Binding DownButton}">
+                                    <Button.Content>
+                                        <Path Width="65" Height="65" Stretch="Fill" Fill="White" Data="M30 18L40 18L20 36L-7.86805e-07 18L10 18L10 -1.31134e-06L30 -4.37114e-07L30 18Z"/>
+                                    </Button.Content>
+                                </Button>
+                                <TextBlock FontSize="25" Margin="0,-3,0,0" Text="Пастга" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Border>
+
+            </ListBoxItem>
+            <ListBoxItem>
+                <Border Width="360" Height="760" CornerRadius="10" Background="#FFB3E5FC" VerticalAlignment="Top">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="16*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="5*"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0"
+                        Margin="10,10,10,10"
+                        Background="#3F51B5"
+                        CornerRadius="10" Grid.ColumnSpan="2">
+                            <TextBlock 
+                            FontSize="30"
+                            FontWeight="DemiBold"
+                            Foreground="White"
+                            Text="2- Darvoza" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <Border Grid.Row="1" 
+                        CornerRadius="8"
+                        Margin="15,10,15,15" Background="#4FC3F7" Grid.ColumnSpan="2">
+                            <Canvas>
+                                <Border x:Name="minBottomColor2" Background="{Binding MinBottomColor}" Canvas.Bottom="0" Width="330"  Height="23"  CornerRadius="0,0,4,4"  HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                <Border x:Name="maxTopColor2" Background="{Binding MaxTopColor}" Width="330"  Height="23"  CornerRadius="4,4,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                <Border
+                            Width="25" Height="395" 
+                            Background="#81D4FA"
+                            CornerRadius="6" HorizontalAlignment="Center" Canvas.Top="23" VerticalAlignment="Top"
+                            />
+                                <Border
+                            Width="25" Height="396"
+                            Background="#81D4FA"
+                            CornerRadius="6" HorizontalAlignment="Left" Canvas.Left="305" Canvas.Top="23" VerticalAlignment="Center"
+                            />
+                                <Border
+                            Width="16" Name="damheight2" Height="{Binding HeightGate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            Background="#81D4FA"
+                            CornerRadius="6" Canvas.Left="156" Canvas.Top="23"
+                            />
+                                <Border Canvas.Left="25" Canvas.Top="{Binding HeightGate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="#FFB3E5FC" Width="280" Height="125" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,23,0,0">
+                                    <Border 
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Width="150"
+                                CornerRadius="8"
+                                    Background="#E1F5FE"
+                                    Height="60">
+                                        <TextBlock        
+                                    FontSize="40" Name="damlevel2"
+                                    LineHeight="40" TextAlignment="Center"
+                                    Text=""
+                                    />
+                                    </Border>
+                                </Border>
+                            </Canvas>
+                        </Border>
+                        <WrapPanel Grid.Row="2" Visibility="{Binding IsGlobal}" Grid.ColumnSpan="2" Margin="0,0,0,148" Grid.RowSpan="2">
+                            <TextBox PreviewTextInput="NumberValidationTextBox" x:Name="inputText2">
+                                <TextBox.Resources>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                        <Setter Property="FontSize" Value="25"/>
+                                        <Setter Property="Width" Value="200"/>
+                                        <Setter Property="Margin" Value="10,0,5,0"/>
+                                        <Setter Property="Height" Value="50"/>
+                                        <Setter Property="TextAlignment" Value="Center"/>
+                                        <Setter Property="Padding" Value="5"/>
+                                    </Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="BorderThickness" Value="3"/>
+                                        <Setter Property="BorderBrush" Value="#E1F5FE"/>
+                                        <Setter Property="CornerRadius" Value="10"/>
+
+                                    </Style>
+                                </TextBox.Resources>
+                            </TextBox>
+                            <Button Background="#2196F3" Name="btnInsert2"
+                                Foreground="White" BorderThickness="0"
+                                FontWeight="DemiBold" FontSize="20" Width="125" Height="50" Margin="5,0,10,0" IsEnabled="{Binding AcceptButton}"
+                            >
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                                Киритиш
+                            </Button>
+                        </WrapPanel>
+                        <Grid Grid.Row="3" Margin="10,0,10,0" Visibility="{Binding IsGlobal}" Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Margin="5,0" Grid.Column="0">
+                                <Button Width="100" Background="#2196F3" BorderThickness="0" Height="100" Name="btnUp2" IsEnabled="{Binding UpButton}">
+                                    <Button.Content>
+                                        <Path Width="65" Height="65" Stretch="Fill" Fill="White" Data="M10 18L-7.86805e-07 18L20 -8.74228e-07L40 18L30 18L30 36L10 36L10 18Z"/>
+                                    </Button.Content>
+                                </Button>
+                                <TextBlock FontSize="25" Margin="0,-3,0,0" Text="Тепага" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="5,0" Grid.Column="1">
+                                <Button Width="100" BorderThickness="0" Background="#EF5350" Height="100" Name="btnStop2" IsEnabled="{Binding StopButton}">
+                                    <Button.Content>
+                                        <Path  Width="65" Height="65" Stretch="Fill" Fill="White" Data="M9 16.2V19.8H27V16.2H9ZM18 0C8.064 0 0 8.064 0 18C0 27.936 8.064 36 18 36C27.936 36 36 27.936 36 18C36 8.064 27.936 0 18 0ZM18 32.4C10.062 32.4 3.6 25.938 3.6 18C3.6 10.062 10.062 3.6 18 3.6C25.938 3.6 32.4 10.062 32.4 18C32.4 25.938 25.938 32.4 18 32.4Z"/>
+                                    </Button.Content>
+                                </Button>
+                                <TextBlock FontSize="25" Margin="0,-3,0,0" Text="Стоп" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="5,0" Grid.Column="2">
+                                <Button Width="100" BorderThickness="0" Background="#2196F3" Height="100" Name="btnDown2" IsEnabled="{Binding DownButton}">
+                                    <Button.Content>
+                                        <Path Width="65" Height="65" Stretch="Fill" Fill="White" Data="M30 18L40 18L20 36L-7.86805e-07 18L10 18L10 -1.31134e-06L30 -4.37114e-07L30 18Z"/>
+                                    </Button.Content>
+                                </Button>
+                                <TextBlock FontSize="25" Margin="0,-3,0,0" Text="Пастга" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </ListBoxItem>
+            <ListBoxItem>
+                <Border Width="360" Height="760" CornerRadius="10" Background="#FFB3E5FC" VerticalAlignment="Top">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="16*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="5*"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0"
+                        Margin="10,10,10,10"
+                        Background="#3F51B5"
+                        CornerRadius="10" Grid.ColumnSpan="2">
+                            <TextBlock 
+                            FontSize="30"
+                            FontWeight="DemiBold"
+                            Foreground="White"
+                            Text="2- Darvoza" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <Border Grid.Row="1" 
+                        CornerRadius="8"
+                        Margin="15,10,15,15" Background="#4FC3F7" Grid.ColumnSpan="2">
+                            <Canvas>
+                                <Border x:Name="minBottomColor3" Background="{Binding MinBottomColor}" Canvas.Bottom="0" Width="330"  Height="23"  CornerRadius="0,0,4,4"  HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                <Border x:Name="maxTopColor3" Background="{Binding MaxTopColor}" Width="330"  Height="23"  CornerRadius="4,4,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                <Border
+                            Width="25" Height="395" 
+                            Background="#81D4FA"
+                            CornerRadius="6" HorizontalAlignment="Center" Canvas.Top="23" VerticalAlignment="Top"
+                            />
+                                <Border
+                            Width="25" Height="396"
+                            Background="#81D4FA"
+                            CornerRadius="6" HorizontalAlignment="Left" Canvas.Left="305" Canvas.Top="23" VerticalAlignment="Center"
+                            />
+                                <Border
+                            Width="16" Name="damheight3" Height="{Binding HeightGate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            Background="#81D4FA"
+                            CornerRadius="6" Canvas.Left="156" Canvas.Top="23"
+                            />
+                                <Border Canvas.Left="25" Canvas.Top="{Binding HeightGate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="#FFB3E5FC" Width="280" Height="125" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,23,0,0">
+                                    <Border 
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Width="150"
+                                CornerRadius="8"
+                                    Background="#E1F5FE"
+                                    Height="60">
+                                        <TextBlock        
+                                    FontSize="40" Name="damlevel3"
+                                    LineHeight="40" TextAlignment="Center"
+                                    Text=""
+                                    />
+                                    </Border>
+                                </Border>
+                            </Canvas>
+                        </Border>
+                        <WrapPanel Grid.Row="2" Visibility="{Binding IsGlobal}" Grid.ColumnSpan="2" Margin="0,0,0,148" Grid.RowSpan="2">
+                            <TextBox PreviewTextInput="NumberValidationTextBox" x:Name="inputText3">
+                                <TextBox.Resources>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                        <Setter Property="FontSize" Value="25"/>
+                                        <Setter Property="Width" Value="200"/>
+                                        <Setter Property="Margin" Value="10,0,5,0"/>
+                                        <Setter Property="Height" Value="50"/>
+                                        <Setter Property="TextAlignment" Value="Center"/>
+                                        <Setter Property="Padding" Value="5"/>
+                                    </Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="BorderThickness" Value="3"/>
+                                        <Setter Property="BorderBrush" Value="#E1F5FE"/>
+                                        <Setter Property="CornerRadius" Value="10"/>
+
+                                    </Style>
+                                </TextBox.Resources>
+                            </TextBox>
+                            <Button Background="#2196F3" Name="btnInsert3"
+                                Foreground="White" BorderThickness="0"
+                                FontWeight="DemiBold" FontSize="20" Width="125" Height="50" Margin="5,0,10,0" IsEnabled="{Binding AcceptButton}"
+                            >
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                                Киритиш
+                            </Button>
+                        </WrapPanel>
+                        <Grid Grid.Row="3" Margin="10,0,10,0" Visibility="{Binding IsGlobal}" Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Margin="5,0" Grid.Column="0">
+                                <Button Width="100" Background="#2196F3" BorderThickness="0" Height="100" Name="btnUp3" IsEnabled="{Binding UpButton}">
+                                    <Button.Content>
+                                        <Path Width="65" Height="65" Stretch="Fill" Fill="White" Data="M10 18L-7.86805e-07 18L20 -8.74228e-07L40 18L30 18L30 36L10 36L10 18Z"/>
+                                    </Button.Content>
+                                </Button>
+                                <TextBlock FontSize="25" Margin="0,-3,0,0" Text="Тепага" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="5,0" Grid.Column="1">
+                                <Button Width="100" BorderThickness="0" Background="#EF5350" Height="100" Name="btnStop3" IsEnabled="{Binding StopButton}">
+                                    <Button.Content>
+                                        <Path  Width="65" Height="65" Stretch="Fill" Fill="White" Data="M9 16.2V19.8H27V16.2H9ZM18 0C8.064 0 0 8.064 0 18C0 27.936 8.064 36 18 36C27.936 36 36 27.936 36 18C36 8.064 27.936 0 18 0ZM18 32.4C10.062 32.4 3.6 25.938 3.6 18C3.6 10.062 10.062 3.6 18 3.6C25.938 3.6 32.4 10.062 32.4 18C32.4 25.938 25.938 32.4 18 32.4Z"/>
+                                    </Button.Content>
+                                </Button>
+                                <TextBlock FontSize="25" Margin="0,-3,0,0" Text="Стоп" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="5,0" Grid.Column="2">
+                                <Button Width="100" BorderThickness="0" Background="#2196F3" Height="100" Name="btnDown3" IsEnabled="{Binding DownButton}">
+                                    <Button.Content>
+                                        <Path Width="65" Height="65" Stretch="Fill" Fill="White" Data="M30 18L40 18L20 36L-7.86805e-07 18L10 18L10 -1.31134e-06L30 -4.37114e-07L30 18Z"/>
+                                    </Button.Content>
+                                </Button>
+                                <TextBlock FontSize="25" Margin="0,-3,0,0" Text="Пастга" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </ListBoxItem>
+        </ListBox>
+    </DockPanel>
+</Page>
