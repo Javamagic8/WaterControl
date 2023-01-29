@@ -58,8 +58,8 @@
                         CornerRadius="8"
                         Margin="15,10,15,15" Background="#4FC3F7" Grid.ColumnSpan="2">
                             <Canvas>
-                                <Border x:Name="minBottomColor1" Background="{Binding MinBottomColor}" Canvas.Bottom="0" Width="330"  Height="23"  CornerRadius="0,0,4,4"  HorizontalAlignment="Left" VerticalAlignment="Center" />
-                                <Border x:Name="maxTopColor1" Background="{Binding MaxTopColor}" Width="330"  Height="23"  CornerRadius="4,4,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                <Border x:Name="MinHeight1" Background="{Binding MinBottomColor}" Canvas.Bottom="0" Width="330"  Height="23"  CornerRadius="0,0,4,4"  HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                <Border x:Name="MaxHeight1" Background="{Binding MaxTopColor}" Width="330"  Height="23"  CornerRadius="4,4,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" />
                                 <Border
                             Width="25" Height="395" 
                             Background="#81D4FA"
@@ -93,7 +93,7 @@
                             </Canvas>
                         </Border>
                         <WrapPanel Grid.Row="2" Visibility="{Binding IsGlobal}" Grid.ColumnSpan="2" Margin="0,0,0,148" Grid.RowSpan="2">
-                            <TextBox PreviewTextInput="NumberValidationTextBox" x:Name="inputText1">
+                            <TextBox PreviewTextInput="NumberValidationTextBox" x:Name="InputHeight1">
                                 <TextBox.Resources>
                                     <Style TargetType="TextBox">
                                         <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -113,7 +113,7 @@
                                     </Style>
                                 </TextBox.Resources>
                             </TextBox>
-                            <Button Background="#2196F3" Name="btnInsert1"
+                            <Button Background="#2196F3" Name="btnInputHeight1"
                                 Foreground="White" BorderThickness="0"
                                 FontWeight="DemiBold" FontSize="20" Width="125" Height="50" Margin="5,0,10,0" IsEnabled="{Binding AcceptButton}"
                             >
@@ -187,8 +187,8 @@
                         CornerRadius="8"
                         Margin="15,10,15,15" Background="#4FC3F7" Grid.ColumnSpan="2">
                             <Canvas>
-                                <Border x:Name="minBottomColor2" Background="{Binding MinBottomColor}" Canvas.Bottom="0" Width="330"  Height="23"  CornerRadius="0,0,4,4"  HorizontalAlignment="Left" VerticalAlignment="Center" />
-                                <Border x:Name="maxTopColor2" Background="{Binding MaxTopColor}" Width="330"  Height="23"  CornerRadius="4,4,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                <Border x:Name="MinHeight2" Background="{Binding MinBottomColor}" Canvas.Bottom="0" Width="330"  Height="23"  CornerRadius="0,0,4,4"  HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                <Border x:Name="MaxHeight2" Background="{Binding MaxTopColor}" Width="330"  Height="23"  CornerRadius="4,4,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" />
                                 <Border
                             Width="25" Height="395" 
                             Background="#81D4FA"
@@ -222,7 +222,7 @@
                             </Canvas>
                         </Border>
                         <WrapPanel Grid.Row="2" Visibility="{Binding IsGlobal}" Grid.ColumnSpan="2" Margin="0,0,0,148" Grid.RowSpan="2">
-                            <TextBox PreviewTextInput="NumberValidationTextBox" x:Name="inputText2">
+                            <TextBox PreviewTextInput="NumberValidationTextBox" x:Name="InputHeight2">
                                 <TextBox.Resources>
                                     <Style TargetType="TextBox">
                                         <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -242,7 +242,7 @@
                                     </Style>
                                 </TextBox.Resources>
                             </TextBox>
-                            <Button Background="#2196F3" Name="btnInsert2"
+                            <Button Background="#2196F3" Name="btnInputHeight2"
                                 Foreground="White" BorderThickness="0"
                                 FontWeight="DemiBold" FontSize="20" Width="125" Height="50" Margin="5,0,10,0" IsEnabled="{Binding AcceptButton}"
                             >
