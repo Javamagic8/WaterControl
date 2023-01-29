@@ -32,7 +32,6 @@ namespace WaterControl.Windows
         {
             InitializeComponent();
             MenuPanel.Width = 0;
-            waterdDammName.Text = "Хўжаобод Гидроузели";
             mainWindowMiddleContent.Navigate(new RegionCardPage());
             LoadDataFromSmartWater();
 
@@ -112,6 +111,9 @@ namespace WaterControl.Windows
             RegionCard.Visibility = Visibility.Collapsed;
             mainWindowMiddleContent.Visibility = Visibility.Visible;
             mainWindowMiddleContent.Navigate(new SecondWaterDam());
+            backtocard.Visibility = Visibility.Visible;
+            waterdDammName.Text = "Полвон 1- Гидропост";
+
         }
 
         private void kampirqalaWaterDamm_Click(object sender, RoutedEventArgs e)
@@ -119,6 +121,18 @@ namespace WaterControl.Windows
             RegionCard.Visibility = Visibility.Collapsed;
             mainWindowMiddleContent.Visibility = Visibility.Visible;
             mainWindowMiddleContent.Navigate(new FirsWaterDam());
+            backtocard.Visibility = Visibility.Visible;
+            waterdDammName.Text = "Бош магистраль 1- Гидропост";
+
+        }
+
+        private void backtocard_Click(object sender, RoutedEventArgs e)
+        {
+            RegionCard.Visibility = Visibility.Visible;
+            mainWindowMiddleContent.Visibility = Visibility.Collapsed;
+            backtocard.Visibility = Visibility.Hidden;
+            waterdDammName.Text = "Андижон Вилояти";
+
         }
     }
 }
